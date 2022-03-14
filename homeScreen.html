@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ <link href="CSSP/CSSLayout.css" type ="text/css" rel = "stylesheet">
+
+    <head>
+          <title> Escape room Home Screen </title>
+        <script src='http://use.edgefonts.net/nosifer.js'></script>
+        <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src="javascript/projectJS.js"></script>
+    </head>
+    
+    <body onload="setDifficulty('medium');">
+
+      <div id="wrapper" class="content">
+
+        <div class="title">
+            <h1>Escape Room</h1>
+            <h2>House Of Horrors</h2>
+        </div>
+          
+            <div class="homeCol1">
+                <h2>Welcome fearce competitor</h2>
+                <h3>Enter account details to escape the House</h3>
+                <br>
+                
+                <div class="info">
+                    <br>
+                 <label for="txtUserName"> UserName: </label>  
+                    <br>
+                    <input type="text" name="txtUserName" id="txtUserName">
+                    <br>
+                       <label for="drpDifficulty" > Difficulty: </label>  
+                    <a onclick="setDifficulty('easy');" href="#" style="padding-right: 15px;">Easy</a>
+                    <a onclick="setDifficulty('medium');" href="#" style=" padding-right: 15px;">Normal</a>
+                    <a onclick="setDifficulty('hard');" href="#" >Hard</a>
+                    
+                    <h3 style="text-decoration: underline;">Font Size Selector</h3>
+                    <a onclick="fontResizer('small');" href="#" style="font-size: 75%; padding-right: 15px;">Small</a>
+                    <a onclick="fontResizer('normal');" href="#" style="font-size: 100%; padding-right: 15px;">Normal</a>
+                    <a onclick="fontResizer('large');" href="#" style="font-size: 150%;">Large</a>
+                    
+                </div>
+                
+            </div>
+          
+            <div class="videoCol">
+          
+                <video class autoplay muted loop id="myVideo" alt="Live image of House">
+                <source src="projectImages/background.mp4" type="video/mp4">  </video> 
+                
+            </div>
+         <audio controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+          <button onclick="send();"> Start Game </button>
+      </div>
+        
+    </body>
+    
+</html>

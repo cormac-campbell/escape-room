@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>ESCAPE ROOM</title>
+        
+        <link href="CSSP/layoutER.css" type="text/css" rel="stylesheet">
+        <script src='http://use.edgefonts.net/nosifer.js'></script>
+        <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src = "javascript/projectJS.js"></script>
+    </head>
+    
+    <body onload="startTimer(); fontLoad(); startCount3();">
+        
+            <div id="wrapper" class ="content">
+                 <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+                <h1>ESCAPE ROOM</h1>
+        
+            <div class="col1">
+                <img src="projectImages/AtticWithKey.jpg" alt="Attic scene with key" />
+                <button class="button5" onclick="window.open('Level 4.5.html', '_self');">
+                key</button>
+            </div>
+        
+            <div class="col2">
+            
+            <h2>ROOM 4.4</h2>
+            <p>[System] As you place the doll on the chair it vanishes <br>
+            in a puff of smoke and a key falls from the ceiling.
+            </p>
+            <p>[Player] That's it! My way out of this nightmare, I better hurry.
+            </p>
+            <div class ="col3">
+                <br>
+                <label>Time remaining: <span id = 'timer'></span></label>
+                    </div>
+                </div>
+            </div>
+        </body>
+    
+    </html>

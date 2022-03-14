@@ -1,0 +1,419 @@
+<html>
+   
+    <head> 
+        <title>ESCAPE ROOM</title>
+        <link href="CSSP/layoutERKitchen.css" type="text/css" rel="stylesheet">
+        <script src='http://use.edgefonts.net/nosifer.js'></script>
+        <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src="javascript/projectJS.js"></script>
+    </head>
+    
+    <body style = "background-color: black; font-family: nosifer;" onload = "difficultyLoad(); fontLoad(); startCount1();">
+        
+        <script>
+        function HideMainScreenLevel2()
+        {
+        document.getElementById("OldKitchen").style.visibility = "hidden";
+        document.getElementById("OldSafe").style.visibility = "hidden";
+        document.getElementById("OvenDoor").style.visibility = "hidden";
+        document.getElementById("OldDrawer").style.visibility = "hidden";
+        document.getElementById("SafeLock").style.visibility = "visible";
+        document.getElementById("SafeLockPrompt").style.visibility = "visible";
+        document.getElementById("YesButton").style.visibility="visible";
+        document.getElementById("NoButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-It appears that the safe is locked, maybe they way out is in the safe.";
+        }
+        function EnterSafeCode()
+        {
+        document.getElementById("SafeLockPrompt").style.visibility="hidden";
+        document.getElementById("YesButton").style.visibility="hidden";
+        document.getElementById("NoButton").style.visibility="hidden";
+        document.getElementById("CodeLabel").style.visibility="visible";
+        document.getElementById("CodeInput").style.visibility="visible";
+        document.getElementById("CodeSubmit").style.visibility="visible";
+        document.getElementById("BackToCodePromptButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-The safe needs a 4 digit code to be opened.";
+        }
+        function BackToKitchen()
+        {
+        document.getElementById("OldKitchen").style.visibility = "visible";
+        document.getElementById("OldSafe").style.visibility = "visible";
+        document.getElementById("OvenDoor").style.visibility = "visible";
+        document.getElementById("OldDrawer").style.visibility = "visible";
+        document.getElementById("SafeLock").style.visibility = "hidden";
+        document.getElementById("SafeLockPrompt").style.visibility = "hidden";
+        document.getElementById("YesButton").style.visibility="hidden";
+        document.getElementById("NoButton").style.visibility="hidden";
+        document.getElementById("InsideOven").style.visibility = "hidden";
+        document.getElementById("OvenClue").style.visibility="hidden";
+        document.getElementById("BackToKitchenOvenButton").style.visibility="hidden";
+        document.getElementById("InsideOldDrawer").style.visibility="hidden";
+        document.getElementById("DrawerClue").style.visibility="hidden";
+        document.getElementById("BackToKitchenDrawerButton").style.visibility="hidden";
+        document.getElementById("SystemOutput").innerHTML = "[System]-Maybe the clue to the safe is hidden or written down somewhere in this room";
+        
+        }
+        function BackToCodePrompt()
+        {
+        document.getElementById("CodeLabel").style.visibility="hidden";
+        document.getElementById("CodeInput").style.visibility="hidden";
+        document.getElementById("CodeSubmit").style.visibility="hidden";
+        document.getElementById("BackToCodePromptButton").style.visibility="hidden";
+        document.getElementById("SafeLock").style.visibility = "visible";
+        document.getElementById("SafeLockPrompt").style.visibility = "visible";
+        document.getElementById("YesButton").style.visibility="visible";
+        document.getElementById("NoButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-Don't know the code to the safe? Maybe its somewhere near by";
+        }
+            
+        function BackToLoadOvenClue()
+        {
+        document.getElementById("InsideOven").style.visibility="visible";
+        document.getElementById("OvenClue").style.visibility="visible";
+        document.getElementById("BackToKitchenOvenButton").style.visibility="visible";
+        document.getElementById("ViewingOvenClue").style.visibility="hidden";
+        document.getElementById("BackToLoadOvenClueButton").style.visibility="hidden";
+        document.getElementById("SystemOutput").innerHTML = "[System]-Ok thats a part of the code found";
+        }
+            
+        function LoadOvenClue()
+        {
+        document.getElementById("OldKitchen").style.visibility = "hidden";
+        document.getElementById("OldSafe").style.visibility = "hidden";
+        document.getElementById("OvenDoor").style.visibility = "hidden";
+        document.getElementById("OldDrawer").style.visibility = "hidden";
+        document.getElementById("InsideOven").style.visibility = "visible";
+        document.getElementById("OvenClue").style.visibility="visible";
+        document.getElementById("BackToKitchenOvenButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-There appears to be an old piece of paper inside the oven, maybe you should examine it";
+        }
+        function ViewOvenClue()
+        {
+        document.getElementById("InsideOven").style.visibility="hidden";
+        document.getElementById("OvenClue").style.visibility="hidden";
+        document.getElementById("ViewingOvenClue").style.visibility="visible";
+        document.getElementById("BackToKitchenOvenButton").style.visibility="hidden";
+        document.getElementById("BackToLoadOvenClueButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-There are numbers written on the piece of paper, must be the part of the safe code";
+        }
+        function ViewInsideOldDrawer()
+        {
+        document.getElementById("OldKitchen").style.visibility="hidden";
+        document.getElementById("OldSafe").style.visibility="hidden";
+        document.getElementById("OvenDoor").style.visibility="hidden";
+        document.getElementById("OldDrawer").style.visibility="hidden";
+        document.getElementById("InsideOldDrawer").style.visibility="visible";
+        document.getElementById("DrawerClue").style.visibility="visible";
+        document.getElementById("BackToKitchenDrawerButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-Wow theres an old piece of paper in this drawer maybe its a clue";
+        }
+        function BackToLoadDrawer()
+        {
+        document.getElementById("InsideOldDrawer").style.visibility="visible";
+        document.getElementById("DrawerClue").style.visibility="visible";
+        document.getElementById("BackToKitchenDrawerButton").style.visibility="visible";
+        document.getElementById("ViewingDrawerClue").style.visibility="hidden";
+        document.getElementById("BackToLoadDrawerButton").style.visibility="hidden";
+        document.getElementById("SystemOutput").innerHTML = "[System]-Ok thats a part of the code found";
+        }
+        function ViewDrawerClue()
+        {
+        document.getElementById("InsideOldDrawer").style.visibility="hidden";
+        document.getElementById("DrawerClue").style.visibility="hidden";
+        document.getElementById("BackToKitchenDrawerButton").style.visibility="hidden";
+        document.getElementById("ViewingDrawerClue").style.visibility="visible";
+        document.getElementById("BackToLoadDrawerButton").style.visibility="visible";
+        document.getElementById("SystemOutput").innerHTML = "[System]-There are numbers written on the piece of paper, must be the part of the safe code";
+        }    
+        function FailedCodeAttempt()
+        {
+        document.getElementById("CodeInput").value="";
+        document.getElementById("CodeLabel").style.visibility="hidden";
+        document.getElementById("CodeInput").style.visibility="hidden";
+        document.getElementById("CodeSubmit").style.visibility="hidden";
+        document.getElementById("BackToCodePromptButton").style.visibility="hidden";
+        document.getElementById("SafeLock").style.visibility = "visible";
+        document.getElementById("SafeLockPrompt").style.visibility = "visible";
+        document.getElementById("YesButton").style.visibility="visible";
+        document.getElementById("NoButton").style.visibility="visible";
+        }
+        function CheckCode()
+        {
+        var userCode = document.getElementById("CodeInput").value;
+        if(userCode == "")
+            {
+               FailedCodeAttempt();
+               document.getElementById("SystemOutput").innerHTML="[System]-It appears that the safe didnt open, you must enter a code.";
+            }
+            else if(userCode.toString().length != 4)
+            {
+                FailedCodeAttempt();
+                document.getElementById("SystemOutput").innerHTML="[System]-It appears that wasnt the right code for the safe, the code is a 4 digit combination."
+            }
+            else if(userCode != 2579)
+            {
+                FailedCodeAttempt();
+                document.getElementById("SystemOutput").innerHTML="[System]-It appears that wasnt the right code for the safe, maybe try again or check for clues."
+            }
+            else if(userCode == 2579)
+            {  
+                document.getElementById("CodeLabel").style.visibility="hidden";
+                document.getElementById("CodeInput").style.visibility="hidden";
+                document.getElementById("CodeSubmit").style.visibility="hidden";
+                document.getElementById("BackToCodePromptButton").style.visibility="hidden";
+                document.getElementById("SafeLock").style.visibility = "hidden";
+                document.getElementById("InsideSafe").style.visibility = "visible";
+                document.getElementById("Key").style.visibility = "visible";
+                document.getElementById("SystemOutput").innerHTML= "[System]-You found a key to the next room in the safe, click it and advance."
+            }
+        }
+        </script>
+        
+        <style>  
+            
+            .small 
+            {
+                font-size: 90%;
+            }
+
+            .normal 
+            {
+                font-size: 100%;
+            }
+
+            .large 
+            {
+                font-size: 110%;
+            }
+    
+        .OldKitchen
+        {
+        position: relative;
+        max-height: 80%;
+        max-width: 100%;
+        }
+        .OldSafe
+        {
+        position: absolute;
+        top: 54%;
+        left:56%;
+        }  
+        .SafeLock
+        {
+        position: absolute;
+        top: 17%;
+        left: 35.46%;
+        visibility: hidden;
+        }
+        .InsideSafe
+        {
+        position: absolute;
+        top: 17%;
+        left: 35.46%;
+        visibility: hidden;        
+        }
+        .Key
+        {
+        position: absolute;
+        top:74%;
+        left: 50%;
+        visibility: hidden;
+        }
+        .OldOvenDoor
+        {
+        position:absolute;
+        top:72%;
+        left:48%;
+        }
+        .InsideOldOven
+        {
+        position:absolute;
+        top: 17%;
+        left: 35.46%;
+        visibility:hidden;
+        }
+        .OvenClue
+        {
+        position:absolute;
+        top:25%;
+        left:55%;
+        visibility:hidden;
+        }
+        .Clue
+        {
+        position:absolute;
+        top: 17%;
+        left: 47%;
+        height: 74.2%;
+        width: 30%;
+        visibility:hidden;
+        }
+        .OldDrawer
+        {
+        position:absolute;
+        top:52%;
+        left:69%;
+        }
+        .InsideOldDrawer
+        {
+        position:absolute;
+        top: 17%;
+        left: 47%;
+        height: 74.4%;
+        width: 30%;
+        visibility:hidden;
+        }
+        .DrawerClue
+        {
+        position: absolute;
+        top:32%;
+        left:55%;
+        visibility:hidden;
+        }
+        .SafeLockPrompt
+        {
+        position: absolute;
+        color: white;
+        top:18%;
+        left:36%;
+        visibility:hidden;
+        }
+        .YesButton
+        {
+        position: absolute;
+        top:23%;
+        left:36%;
+        height:3%;
+        width:5%;
+        visibility:hidden;
+        }
+        .NoButton
+        {
+        position: absolute;
+        top:23%;
+        left:45%;
+        height:3%;
+        width:5%;
+        visibility:hidden;
+        }
+        .CodeLabel
+        {
+        position:absolute;
+        color: white;
+        top:27%;
+        left:36%;
+        height:4%;
+        width:5%;
+        visibility: hidden;
+        }
+        .CodeInput
+        {
+        position: absolute;
+        top:27%;
+        left:42%;
+        height:4%;
+        width:9%;
+        visibility: hidden;
+        }
+        .CodeSubmit
+        {
+        position: absolute;
+        top: 27%;
+        left:53%;
+        height:3%;
+        width:5%;
+        visibility:hidden;
+        }
+        .BackButton
+        {
+        position:absolute;
+        top:17%;
+        left:35.5%;
+        height:4%;
+        width:6%;
+        visibility:hidden;
+        z-index: 1;
+        }
+        .Transparent
+            {
+                background-color: transparent;
+                background-repeat: no-repeat;
+                border: none;
+                cursor: pointer;
+                overflow: hidden;
+                outline: none;
+            }
+         h2, h3
+            {
+                font-family: de-walpergens-pica; 
+            }
+        p
+            {
+                 font-family: de-walpergens-pica; 
+            }
+        
+        </style>
+        <div id="wrapper" class="content">
+                <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+            <h1>ESCAPE ROOM</h1>
+            <div class="col2">
+                <h1>ROOM 2</h1>
+                <p id= "SystemOutput">[System]-you enter the kitchen of the run down house, there appears to be a safe in the corner, maybe it holds the way out of here, try searching it.<br><br></p>
+                <div class="col3">
+                    <label>Time Remaining: <span id='timer'></span></label>
+                </div>
+            </div>
+        <div class="col1">
+        <center>
+        <img id = "OldKitchen" class = "OldKitchen" src="projectImages/OldKitchen.jpg" alt = "Old Kitchen" title = "Old Haunted Kitchen"/>
+        </center>
+            
+        <img id = "OldSafe" class = "OldSafe" src = "projectImages/OldSafe.jpg" alt = "OldSafe" title = "Safe in Haunted Kitchen" width="7%"
+        height="15%" onclick = "HideMainScreenLevel2()"/>
+            
+        <img id = "SafeLock" class = "SafeLock" src = "projectImages/OldSafeLock.jpg" alt = "SafeLock" width="53.4%" height="74%" title = "Lock of the Old Safe"/>
+            
+            <button class="Transparent OldOvenDoor" id="OvenDoor" style="width: 11%;height: 19%" onclick="LoadOvenClue()"></button>
+           
+            <input type="button" class="BackButton" id="BackToKitchenOvenButton" value="Back" onclick="BackToKitchen()"/>
+            
+        <img id="InsideOven" class="InsideOldOven "src="projectImages/InsideOldOven.jpg" alt="InsideOldOven" width="53.4%" height="74%" title="Inside the kitchen oven"/>
+        
+        <img id="OvenClue" class="OvenClue" src="projectImages/OldPaper.jpg" alt="Clue1" title="first clue" width="15%" 
+        height="30%" onclick="ViewOvenClue()"/>
+            
+            <input type="button" class="BackButton" id="BackToLoadOvenClueButton" value="Back" onclick="BackToLoadOvenClue()"/>
+         
+        <img id="ViewingOvenClue" class="Clue" src="projectImages/OldPaper1.jpg" alt="ViewOvenClue" title="Viewing The Clue inside the oven"/>  
+            
+            <button class="Transparent OldDrawer" id="OldDrawer" style="width: 7%;height: 3%" onclick="ViewInsideOldDrawer()"></button>
+            
+            <input type="button" class="BackButton" id="BackToKitchenDrawerButton" value="Back" onclick="BackToKitchen()"/>
+            
+        <img id="InsideOldDrawer" class="InsideOldDrawer" src="projectImages/InsideOldDrawer.jpg" alt="InsideOldDrawer" title="The Inside of the Old Drawer"/>
+            
+        <img id="DrawerClue" class="DrawerClue" src="projectImages/OldPaper.jpg" alt="ClueInDrawer" title="Paper inside of the drawer" width="12%" 
+        height="40%" onclick="ViewDrawerClue()"/>
+            
+            <input type="button" class="BackButton" id="BackToLoadDrawerButton" value="Back" onclick="BackToLoadDrawer()"/>
+            
+        <img id="ViewingDrawerClue" class="Clue" src="projectImages/OldPaper2.jpg" alt="ViewDrawerClue" title="Viewing the clue inside of the old drawer" />
+            
+        <img id="InsideSafe" class="InsideSafe" src="projectImages/InsideSafe.jpg" alt="InsideSafe" title="The inside of the kitchen safe" width="53.4%" height="74%"/>
+            
+        <img id="Key" class="Key" src="projectImages/Key.jpg" alt="Key" title="Key to leave kitchen" width="18%" height="12%" onclick="window.open('Room3.html', '_self');"/>
+            
+        <p id= "SafeLockPrompt" class="SafeLockPrompt Text">The safe needs a 4 digit code to open, do you have it?</p>
+            
+            <input type="button" class="BackButton" id="BackToCodePromptButton" value="Back" onclick="BackToCodePrompt()"/>
+            <input type="button" class="YesButton" id="YesButton" name="YesButtonForCode" value="yes" onclick="EnterSafeCode()"/>
+            <input type="button" class="NoButton" id="NoButton" name="NoButtonForCode" value="No" onclick="BackToKitchen()"/>
+            <label id="CodeLabel" class="CodeLabel" for="CodeInput">Safe Code: </label>
+            <input id="CodeInput" class="CodeInput" type="number" name="safe code" id="SafeCode" min="0" max="9999" />
+            <input id="CodeSubmit" class="CodeSubmit" type="submit" value="Check" onclick="CheckCode()"/>
+        </div>
+        </div>
+    </body>
+</html>

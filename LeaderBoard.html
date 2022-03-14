@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <link href="CSSP/CSSLayout.css" type ="text/css" rel = "stylesheet">
+    
+    <head>
+        <title>LeaderBoard</title>
+        <script src='http://use.edgefonts.net/nosifer.js'></script>
+        <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src="javascript/projectJS.js"></script>
+    </head>
+    
+    <body onload="recieve(); fontLoad();">
+        <div id="wrapper" class ="content">
+   
+            <div class="title"> 
+                    <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+                <h1>You've Survived and Escaped!</h1>
+             </div>
+          
+                <div class="leaderboardCol">
+                    <h2>User End Game Statistics</h2>
+                    <h3>Username: <span id="userName"> </span> <br> Room 1 time: <span id="room1Time"></span>  Seconds<br> Room 2 time: <span id="room2Time"></span>  Seconds<br> Room 3 time: <span id="room3Time"></span>  Seconds<br>Totla time: <span id="totalTime"></span> Seconds</h3>
+                  
+                    <div>
+                        <button class="homeScreenButton" onclick="clearSession(); location.href='homeScreen.html';">Home Screen</button>    
+                    </div>
+                    <h1>Only few enter the house and leave alive Congratulations!</h1>
+            </div>
+          
+            <div class="imgCol">
+                <img src="projectImages/forrest-2681103_1920.jpg" alt="Escape trail out of forest" class="leaderboardImg">
+            </div>
+      </div>
+    </body>
+</html>

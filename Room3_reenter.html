@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>ESCAPE ROOM</title>
+        <link href="CSSP/layoutER.css" type="text/css" rel="stylesheet"> 
+        <script src= 'http://use.edgefonts.net/nosifer.js'></script>
+        <script src ='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src = "javascript/projectJS.js"></script>
+    </head>
+    <body onload="fontLoad(); startTimer(); startCount2(); ">
+            <div id="wrapper" class ="content">
+                    <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+            <h1>ESCAPE ROOM</h1>
+            <div class="col1">
+            <img src="projectImages/livingRoomWithKey.jpg" alt="Room 3" id = "change">
+            </div>
+            
+            <div class="col2">
+                
+                <h2>ROOM 3</h2>
+                
+                    <p>[System] You enter a dimly lit living room. A chest sits under the table, but where is the key?<br><br>
+                    
+                    [Player] The chest could hold a clue, but the next door lays open...<br><br>
+                    
+                    [System] Do you go through the door without opening the chest?<br></p>
+                <br>
+            <div class="col3">
+                
+                <label>Time remaining: <span id = 'timer'></span></label>
+                
+                </div>
+            </div>
+        </div>
+            
+    </body>    
+        <script type="text/javascript">
+            
+            //creates button
+            var button = document.createElement("button");
+            //style - button size, position on screen and makes it invisible
+            button.style ="width:20px; height:25px; border: none; position:absolute; right:11.7%; top:42.5%; background: none";
+            var body = document.getElementsByTagName("body")[0];
+            body.appendChild(button);
+            
+            var button2 = document.createElement("button");
+            button2.style ="width:45px; height:25px; border: none; position:absolute; left:53.5%; top:52%; background: none;";
+            //Removes button from page until needed - removes functionality
+            button2.style.visibility = "hidden";
+            var body2 = document.getElementsByTagName("body")[0];
+            body2.appendChild(button2);
+            
+            var submit = document.createElement("button");
+            submit.style ="width:100px; height: 25px; position:absolute; left: 43%; top:10%";
+            submit.innerText = "Submit";
+            submit.style.visibility = "hidden";
+            var body3 = document.getElementsByTagName("body")[0];
+            body3.appendChild(submit);
+            
+            
+            var doorwayNoKeyBtn = document.createElement("button");
+            doorwayNoKeyBtn.style ="width:90px; height:170px; border: none; position:absolute; right:19%; top:26%; background: none;";
+            doorwayNoKeyBtn.id = "noKey";
+            var body4 = document.getElementsByTagName("body")[0];
+            body4.appendChild(doorwayNoKeyBtn);
+            
+            var doorwayBtn = document.createElement("button");
+            doorwayBtn.style ="width:90px; height:170px; border: none; position:absolute; right:19%; top:26%; background: none;";
+            doorwayBtn.style.visibility = "hidden";
+            var body5 = document.getElementsByTagName("body")[0];
+            body5.appendChild(doorwayBtn);
+            
+            var box = document.createElement("input");
+            box.type = "text";
+            
+            doorwayNoKeyBtn.addEventListener ("click", function() { 
+            location.href = "hallwayNoKey.html";
+            });
+            
+            //Add event handler
+            button.addEventListener ("click", function() {
+            keyFound();
+            //sets display to none which means the user can't interact with it
+            button.style.display="none";
+            document.getElementById("noKey").remove();
+                
+            chestButton(); 
+            });
+            
+            submit.addEventListener ("click", function() { 
+            submitClick();
+            });
+                   
+    function chestButton(){
+    //Button is visible so it can now be interacted with
+    button2.style.visibility = "visible";
+    //When the button is clicked, these functions execute
+    button2.addEventListener ("click", function() { 
+    chestClick();
+    textbox();
+        });
+     }
+            
+    function keyFound() {  
+    //changes image on screen
+    document.getElementById("change").src = "projectImages/livingRoomNoKey.jpg";
+    }   
+    
+    function chestClick() {  
+    //changes image on screen
+    document.getElementById("change").src = "projectImages/insideChest.jpg";
+    //sets display to none which means the user can't interact with it
+    button.style.display="none";
+    alert("The chest contains a clue! What do these letters spell?");
+    }
+            
+    function textbox(){
+    button2.style.display="none";
+    submit.style.visibility = "visible"; 
+    box.style = "width:100px; height: 25px; border: 2px solid firebrick; position:absolute; left:34.5%; top:10%";
+    box.value = ""; box.id = "boxID";
+    document.body.appendChild(box);
+    document.getElementById("submit").appendChild(box);
+    }  
+            
+    function submitClick() {
+    var input = document.getElementById("boxID").value; 
+    var a = "ATTIC"; 
+    var b = "Attic"; 
+    var c = "attic";
+    if ( input == "") {
+    alert("You must guess the word if you want to know where to go!");
+    return false;
+    }else if (input != a && input != b && input != c){
+        alert("Try Again! The clock is ticking...");
+        return false;
+    }else{
+        alert("Correct!");
+        returnToRoom();
+        return true;
+        }
+    }
+            
+    function returnToRoom() {  
+    //changes image on screen
+    document.getElementById("change").src = "projectImages/livingRoomNoKey.jpg";
+    //sets display to none which means the user can't interact with it
+    button.style.display="none";
+    button2.style.display="none";
+    submit.style.display="none";
+    box.style.display="none";
+    doorwayBtn.style.visibility = "visible"; 
+    exitWithClue();
+    }
+    
+    function exitWithClue() {  
+    doorwayBtn.addEventListener ("click", function() { 
+    location.href = "hallwayWithClue.html";
+        });
+    }
+            
+    $('body').bind("mousewheel", function() {
+    return false;
+});
+</script> 
+</html>

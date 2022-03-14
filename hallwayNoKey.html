@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ESCAPE ROOM</title>
+        <link href="CSSP/layoutER.css" type="text/css" rel="stylesheet"> 
+        <script src= 'http://use.edgefonts.net/nosifer.js'></script>
+        <script src ='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src = "javascript/projectJS.js"></script>
+    </head>
+    
+    <body onload="fontLoad(); startTimer(); startCount2();">
+            <div id="wrapper" class ="content">
+                <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+            <h1>ESCAPE ROOM</h1>
+            
+            <div class="col1">
+                <img src="projectImages/staircase.jpg" alt="Room -1" id = "change">
+                
+            </div>
+            
+            <div class="col2">
+                
+            <h2>ROOM 3</h2>
+                
+                <p>[System] You leave through the door and walk into a large hallway, with no clue of where to go next...<br><br>
+                    
+                [Player] Where do I go from here? I better go see what was in that chest <br><br>
+                    
+                [System] Click the door to go back.<br></p>
+                <br>
+            
+                <div class="col3">
+                <label>Time remaining: <span id = 'timer'></span></label>
+                </div>
+            </div>
+        </div>
+    </body>  
+    <script type="text/javascript">    
+        //creates button
+        var button = document.createElement("button");
+        //style - button size, position on screen and makes it invisible
+        button.style ="width:50px; height:350px; border: none; position:absolute; right:11%; top:35%; background: none";
+        
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(button);
+        
+        button.addEventListener ("click", function() { 
+        location.href = "Room3_reenter.html";
+    });      
+    </script> 
+</html>
+        

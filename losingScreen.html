@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <link href="CSSP/CSSLayout.css" type ="text/css" rel = "stylesheet">
+    <head>
+        <title>Losing Screen</title>
+        <script src='http://use.edgefonts.net/nosifer.js'></script>
+        <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+        <script src="javascript/projectJS.js"></script>
+    </head>
+    
+    <body onload="fontLoad();">
+        <div id = "wrapper" class="content"> 
+                               <audio class="heading" controls autoplay loop>
+           <source src="sounds/First-Second_AdobeStock_331401288_preview.m4a">
+        </audio>
+            <div class = "title"> <h1> You Have Failed To Escape  </h1> </div>
+           
+            <div class ="lostCol1">
+                <h1>Only the best survive and escape the house</h1>
+                <h2>Dare to try again....</h2>
+                <button class="homeScreenButton" onclick="clearSession(); location.href='homeScreen.html';"> Try Again </button>
+            </div>
+        
+            <div class="imgCol">
+                <img src= "projectImages/grim-reaper-656083_640.jpg" alt="Grim Reaper Comes" class="leaderboardImg">
+            </div>
+        </div>
+    </body>
+</html>
